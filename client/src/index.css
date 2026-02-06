@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+input {
+  outline: none;
+}
+textarea {
+  outline: none;
+}
