@@ -1,7 +1,7 @@
 import "dotenv/config";
 
 export default function setCookies(res, token) {
-  const isProduction = process.env.NODE_URL === "production";
+  const isProduction = process.env.NODE_ENV === "production";
   const sameSiteValue = isProduction ? "None" : "Lax";
   const cookiesOptions = {
     secure: isProduction,
