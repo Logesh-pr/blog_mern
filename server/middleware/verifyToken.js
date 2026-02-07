@@ -12,9 +12,7 @@ export default async function verifyToken(req, res, next) {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "Un Authorization" });
     const verify = jwt.verify(token, process.env.JWT_SIGNATURE);
-    console.log(verify);
     const user = await User.findById(verify.sub);
-    console.log(user);
     if (!user) return res.status(401).json({ message: "No user found" });
     req.user = verify.sub;
     next();
