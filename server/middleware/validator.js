@@ -67,7 +67,7 @@ const loginValidation = checkSchema({
 });
 
 const blogValidation = checkSchema({
-  title: {
+  "blog.title": {
     notEmpty: {
       errorMessage: "Please enter the title field",
     },
@@ -83,7 +83,7 @@ const blogValidation = checkSchema({
       errorMessage: "Maximum 30 characters allowed",
     },
   },
-  description: {
+  "blog.description": {
     notEmpty: {
       errorMessage: "Please enter the description field",
     },
@@ -99,7 +99,7 @@ const blogValidation = checkSchema({
       errorMessage: "Maximum 300 characters allowed",
     },
   },
-  tag: {
+  "blog.tag": {
     notEmpty: {
       errorMessage: "Please enter the tag field",
     },
