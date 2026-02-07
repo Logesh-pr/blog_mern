@@ -96,10 +96,12 @@ const logout = async (req, res, next) => {
         message: "Something went wrong. Try again later",
       });
     }
+    const isProduction = process.env.NODE_ENV === "production";
     res.clearCookie("token", {
       httpOnly: true,
-      sameSite: "strict",
-      secure: process.env.isProduction === "production",
+      sameSite: isProduction ? "None" : "Lax",
+      secure: isProduction,
+      path: "/",
     });
     res.json({ status: 200, message: "Logout successfully" });
   } catch (error) {
