@@ -17,7 +17,7 @@ import SpinnerLoader from "./SpinnerLoader";
 import Error from "./Error";
 
 export default function BlogDetails() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, user } = useContext(AuthContext);
   const { slug } = useParams();
   const { data: details, isLoading, isError } = useGetBlogId(slug);
   const { mutate } = useDeleteBlog();
@@ -43,11 +43,11 @@ export default function BlogDetails() {
   if (isLoading) return <SpinnerLoader />;
 
   if (isError) return <Error redirectHome={true} />;
-
+  console.log(isAuthenticated, user);
   return (
     <div className=" mt-12 container mx-auto px-2">
       <div className="flex flex-wrap justify-end gap-x-6 gap-y-4 text-white px-2 font-semibold">
-        {isAuthenticated && (
+        {isAuthenticated && user.name === details.author.name && (
           <>
             <button
               onClick={() => handleEdit(details.slug)}

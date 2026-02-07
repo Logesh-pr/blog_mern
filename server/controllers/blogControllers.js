@@ -51,11 +51,8 @@ const getBlog = async (req, res, next) => {
         .status(400)
         .json({ message: "Something went wrong , Try again later" });
     }
-    const blogObj = blog.toObject();
-    delete blogObj._id;
-    delete blogObj.__v;
 
-    return res.status(200).json({ blog: blogObj });
+    return res.status(200).json({ blog });
   } catch (error) {
     next(error);
   }
