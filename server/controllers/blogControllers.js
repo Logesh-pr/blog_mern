@@ -21,7 +21,7 @@ const createBlog = async (req, res, next) => {
     const error = validationResult(req);
     if (!error.isEmpty()) return res.status(400).json({ error: error.array() });
 
-    const { title, description, tag } = req.body;
+    const { title, description, tag } = req.body.blog;
     const blog = await Blog.create({
       title,
       description,
@@ -66,9 +66,8 @@ const updateBlog = async (req, res, next) => {
     const error = validationResult(req);
     if (!error.isEmpty()) return res.status(400).json({ error: error.array() });
 
-    console.log("update:", req.user);
     const { slug } = req.params;
-    const { title, description, tag } = req.body;
+    const { title, description, tag } = req.body.blog;
     const blog = await Blog.findOneAndUpdate(
       { slug, author: req.user },
       { title, description, tag },

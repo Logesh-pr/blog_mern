@@ -34,7 +34,6 @@ userSchema.methods.comparePassword = async function (userPassword) {
   try {
     return bcryptjs.compare(userPassword, this.password);
   } catch (error) {
-    console.log(error.message);
     return false;
   }
 };
