@@ -7,5 +7,4 @@ const api = axios.create({
       : import.meta.env.VITE_BACKEND_URL_PRODUCTION,
   withCredentials: true,
 });
-console.log(import.meta.env.VITE_MODE);
 export default api;
