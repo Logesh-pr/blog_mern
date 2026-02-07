@@ -66,8 +66,9 @@ function useUpdateBlog() {
 
   return useMutation({
     mutationFn: ({ slug, data }) => updateBlog(slug, data),
-    onSuccess: () => {
+    onSuccess: (data, { slug }) => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.setQueryData(["blog", slug], data.blog);
     },
   });
 }
