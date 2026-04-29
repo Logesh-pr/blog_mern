@@ -30,7 +30,7 @@ export default function Login({ setSignup }) {
         },
       });
     } catch (error) {
-      if (error.response.data.message === "Invalid email or password") {
+      if (error?.response?.data.message === "Invalid email or password") {
         setError("root", {
           type: "manual",
           message: "Invalid email or password",
